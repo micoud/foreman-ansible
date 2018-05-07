@@ -20,7 +20,7 @@ foreman_yum_plugins_gpg: 1
 foreman_yum_plugins_key: "http://yum.theforeman.org/releases/latest/RPM-GPG-KEY-foreman"
 
 foreman_plugins_repo: true
-foreman_enable_service: false
+foreman_enable_service: true
 
 foreman_db_adapter: mysql2
 foreman_db_name: foreman

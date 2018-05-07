@@ -3,3 +3,14 @@
   apt:
     update_cache=yes
   when: ansible_pkg_mgr == "apt"
+
+- name: enable centos7 cr repo
+  yum_repository:
+    name: cr
+    description: CentOS-$releasever - cr
+    file: CentOS-CR
+    baseurl: http://mirror.centos.org/centos/$releasever/cr/$basearch/
+    gpgcheck: yes
+    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+    enabled: yes
+  when: enable_cr_repo|bool == true and ansible_pkg_mgr == "yum" and ansible_distribution == "CentOS"

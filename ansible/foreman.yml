@@ -3,7 +3,7 @@
 # including foreman-proxy, tftp and dhcp
 - hosts: all
   vars_files:
-    - vars/example.yml
+    - vars/deploy_prod.yml
   roles:
     - { role: common }
     - { role: mysql }
@@ -11,5 +11,5 @@
     - { role: tftp }
     - { role: foreman }
     - { role: foreman_proxy }
-    - { role: passenger_nginx }
+    - { role: nginx }
     - { role: foreman_yml }
