@@ -1,4 +1,14 @@
 ---
+- name: ensure epel repo is installed
+  yum_repository:
+    name: epel7
+    description: EPEL 7
+    file: epel7
+    baseurl: http://ftp.fau.de/epel/7/$basearch/
+    gpgcheck: yes
+    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+    enabled: yes
+
 - name: ensure pip is installed
   package:
     name: "{{ pip_package }}"

@@ -1,7 +1,7 @@
 ---
 - name: ensure directory exists for local self-signed TLS certs
   file:
-    path: {{ tls_cert_directory }}
+    path: "{{ tls_cert_directory }}/{{ nginx_server_name }}"
     state: directory
 
 - name: ensure python openssl dependencies installed
@@ -11,17 +11,17 @@
 
 - name: ensure openssl private key generated
   openssl_privatekey:
-    path: {{ tls_cert_directory }}/{{ nginx_server_name }}/privkey.pem
+    path: "{{ tls_cert_directory }}/{{ nginx_server_name }}/privkey.pem"
 
 - name: ensure openssl CSR generated
   openssl_csr:
-    path: {{ tls_cert_directory }}/{{ nginx_server_name }}.csr
-    privatekey_path: {{ tls_cert_directory }}/{{ nginx_server_name }}/privkey.pem
+    path: "{{ tls_cert_directory }}/{{ nginx_server_name }}.csr"
+    privatekey_path: "{{ tls_cert_directory }}/{{ nginx_server_name }}/privkey.pem"
     common_name: "{{ nginx_server_name }}"
 
 - name: ensure self signed openss certificate
   openssl_certificate:
-    path: {{ tls_cert_directory }}/{{ nginx_server_name }}/fullchain.pem
-    privatekey_path: {{ tls_cert_directory }}/{{ nginx_server_name }}/privkey.pem
-    csr_path: {{ tls_cert_directory }}/{{ nginx_server_name }}.csr
+    path: "{{ tls_cert_directory }}/{{ nginx_server_name }}/fullchain.pem"
+    privatekey_path: "{{ tls_cert_directory }}/{{ nginx_server_name }}/privkey.pem"
+    csr_path: "{{ tls_cert_directory }}/{{ nginx_server_name }}.csr"
     provider: selfsigned
