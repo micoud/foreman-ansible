@@ -8,6 +8,10 @@ server {
     listen       80 default_server;
     server_name  {{ nginx_server_name }};
 
+    listen      443 default_server;
+    ssl_certificate {{ tls_cert_directory }}/{{ nginx_server_name }}/fullchain.pem;
+    ssl_certificate_key {{ tls_cert_directory }}/{{ nginx_server_name }}/privkey.pem;
+
     access_log  /var/log/nginx/foreman.access.log  main;
     error_log   /var/log/nginx/foreman.error.log;
 

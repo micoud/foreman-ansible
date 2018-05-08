@@ -7,4 +7,5 @@
 
 - include: repository.yml
 - include: installation.yml
+- include: certificates.yml
 - include: configuration.yml

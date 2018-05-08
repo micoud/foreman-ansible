@@ -6,6 +6,7 @@
     - vars/deploy_prod.yml
   roles:
     - { role: common }
+    - { role: pip }
     - { role: mysql }
     - { role: isc_dhcp_server }
     - { role: tftp }
